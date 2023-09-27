@@ -1,13 +1,14 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { styles } from '../styles';
-import { services } from '../constants';
+import { useSelector } from 'react-redux';
+// import { services } from '../constants';
 import { fadeIn, textVariant } from '../utlits/motion';
 import { ServiceCard } from './ServiceCard';
 import { Wrapper } from '../hoc';
 
-
 const About = () => {
+  const { allKnowledges } = useSelector((state) => state.constants)
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -27,7 +28,7 @@ const About = () => {
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>
-        {services.map((service, index) => (
+        {allKnowledges.services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
       </div>

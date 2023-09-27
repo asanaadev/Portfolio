@@ -26,7 +26,7 @@ import {
 	threejs,
 } from "../assets";
 
-export const navLinks = [
+const navLinks = [
 	{
 		id: "about",
 		title: "About",
@@ -262,5 +262,9 @@ const projects = [
 		source_code_link: "https://github.com/",
 	},
 ];
+const allKnowledges = {
+	services, technologies, experiences, testimonials, projects, navLinks
+}
 
-export { services, technologies, experiences, testimonials, projects };
+export default allKnowledges;
+// export { services, technologies, experiences, testimonials, projects };

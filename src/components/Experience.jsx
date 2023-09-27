@@ -3,13 +3,15 @@ import { VerticalTimeline } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { motion } from 'framer-motion';
 import { styles } from "../styles";
-import { experiences } from "../constants";
+import { useSelector } from 'react-redux';
+// import { experiences } from "../constants";
 import { Wrapper } from "../hoc";
 import { textVariant } from "../utlits/motion";
 import { ExperienceCard } from './ExperienceCard';
 
 
 const Experience = () => {
+  const { allKnowledges } = useSelector((state) => state.constants)
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -18,7 +20,7 @@ const Experience = () => {
       </motion.div>
       <div className="mt-20 flex flex-col">
         <VerticalTimeline>
-          {experiences.map((experience, index) => {
+          {allKnowledges.experiences.map((experience, index) => {
             return (
               <ExperienceCard key={index} experience={experience} />
             )

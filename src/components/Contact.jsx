@@ -1,57 +1,35 @@
 import React, { useState, useRef } from 'react'
 import { motion } from "framer-motion"
-import emailjs from "@emailjs/browser"
 import { styles } from '../styles'
 import { EarthCanvas } from './canvas'
 import { Wrapper } from '../hoc'
 import { fadeIn, slideIn } from '../utlits/motion'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { sends, sssss } from '../store/features/contact/contactSlice'
+import { sendEmail } from '../store/features/contact/emailThunk'
 
 
 const Contact = () => {
-  const formRef = useRef()
+  const { sending, success, error } = useSelector((state) => state.contact.thunk);
+  const dispatch = useDispatch()
+
   const [form, setForm] = useState({
     name: '',
     email: '',
     message: '',
-  })
-  const [loading, setLoading] = useState(false)
-
+  });
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setForm({ ...form, [name]: value })
-  }
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
   const handleSubmit = (e) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    dispatch(sendEmail(form));
+    // dispatch(sends(form));
+  };
 
-    emailjs.send(
-      'service_elt23em',
-      'template_65sipaj',
-      {
-        from_name: form.name,
-        to_name: 'Zhumabai',
-        from_email: form.email,
-        to_email: 'asanaalyev1@gmail.com',
-        message: form.message,
-      },
-      'l0cD1aU5ujrnUpotE'
-    )
-      .then(() => {
-        setLoading(false)
-        alert("Thank you. I will get back to you as soon as possible.")
+  const formRef = useRef()
 
-        setForm({
-          name: '',
-          email: '',
-          message: '',
-        })
-      }, (error) => {
-        setLoading(false)
-        console.log(error)
-        alert("Something went wrong.")
-      })
-  }
   return (
     <div
       className='xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden'
@@ -116,7 +94,7 @@ const Contact = () => {
             className='bg-tertiary py-4 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl'
             type='submit'
           >
-            {loading ? 'Sending...' : "Send"}
+            {sending ? 'Sending...' : success ? "Send" : "Send"}
           </button>
         </form>
       </motion.div>

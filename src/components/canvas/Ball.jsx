@@ -1,12 +1,10 @@
 import React, { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Float, OrbitControls, Preload, useTexture, Decal } from '@react-three/drei'
-
 import { Loader } from '../Loader'
 
 const Ball = (props) => {
   const [decal] = useTexture([props.imgUrl])
-
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
       <ambientLight intensity={0.25} />
