@@ -9,7 +9,7 @@ export const computerSlice = createSlice({
 	initialState,
 	reducers: {
 		mobile: (state, action) => {
-			// state.isMobile = !state.isMobile
+			// state.isMobile = !state.isMobile1
 			state.isMobile = action.payload
 		}
 	}
