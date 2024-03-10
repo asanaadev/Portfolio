@@ -173,7 +173,7 @@ const experiences = [
 const testimonials = [
 	{
 		testimonial:
-			"I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
+			"I thought it was impossible to make a website as beautiful as our product, but Zhumabai proved me wrong.",
 		name: "Bekzat",
 		designation: "customer",
 		company: "freelance",
@@ -189,7 +189,7 @@ const testimonials = [
 	},
 	{
 		testimonial:
-			"After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
+			"After Zhumabai optimized our website, our traffic increased by 50%. We can't thank them enough!",
 		name: "Lisa Wang",
 		designation: "CTO",
 		company: "456 Enterprises",
